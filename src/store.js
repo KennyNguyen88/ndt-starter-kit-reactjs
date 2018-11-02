@@ -1,6 +1,12 @@
-import {compose, applyMiddleware, createStore} from "redux";
+import {compose, applyMiddleware, createStore, combineReducers} from "redux";
 import logger from "redux-logger";
-import {rootReducer} from "./reducers";
+import {appReducer} from "./app";
+
+const rootReducer = combineReducers(
+    {
+        app: appReducer
+    }
+);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

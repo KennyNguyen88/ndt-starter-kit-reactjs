@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import { sayHi } from './actions/default';
+import {appActions} from './ducks/';
 class App extends Component {
 
   state = {
@@ -9,10 +9,11 @@ class App extends Component {
 
   componentDidMount(){
     this.props.sayHi();
+    this.props.sayYeah();
   }
 
   componentWillReceiveProps(newProps){
-    this.setState({message: newProps.app});
+    this.setState({message: newProps.message});
   }
 
   render() {
@@ -23,14 +24,15 @@ class App extends Component {
 
 }
 
-const mapStateToProps = ({app}) => {
+const mapStateToProps = ({app: {appReducer}}) => {
     return {
-        app
+        message: appReducer
     };
 };
 
 const mapDispatchToProps = dispatch => ({
-  sayHi: () => dispatch(sayHi())
+  sayHi: () => dispatch(appActions.sayHi()),
+  sayYeah: () => dispatch(appActions.sayYeah())
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
