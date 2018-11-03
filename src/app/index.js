@@ -1,3 +1,3 @@
 import App from "./App";
-export {default as appReducer} from "./ducks";
+export { default as appReducer, pingEpic } from "./ducks";
 export default App;

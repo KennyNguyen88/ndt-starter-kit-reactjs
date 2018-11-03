@@ -1,10 +1,10 @@
 import {combineReducers} from "redux";
-import {SAY_HI, SAY_YEAH} from "./actions";
+import {SAY_HI, SAY_YEAH, PING, PONG} from "./actions";
 
 /* State Shape
 {
     appReducer: string,
-    appTestReducer: string
+    appTestReducer: boolean
 }
  */
 
@@ -12,15 +12,19 @@ const appReducer = (state = {}, action) => {
     switch(action.type){
         case SAY_HI:
             return action.payload;
+        case SAY_YEAH:
+            return action.payload;
         default:
             return state;
     }
 };
 
-const appTestReducer = (state = {}, action) => {
+const appTestReducer = (state = {isPinging: false}, action) => {
     switch(action.type){
-        case SAY_YEAH:
-            return action.payload;
+        case PING:
+            return { isPinging: true };
+        case PONG:
+            return { isPinging: false };
         default:
             return state;
     }

@@ -1,7 +1,11 @@
 import { compose, applyMiddleware, createStore, combineReducers } from "redux";
 import logger from "redux-logger";
-import { appReducer } from "./app";
+import { appReducer, pingEpic } from "./app";
 import { reducer as formReducer } from 'redux-form';
+import { combineEpics, createEpicMiddleware  } from 'redux-observable';
+
+const rootEpic = combineEpics(pingEpic);
+const epicMiddleware = createEpicMiddleware();
 
 const rootReducer = combineReducers(
     {
@@ -14,5 +18,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(
     rootReducer,
-    composeEnhancers(applyMiddleware(logger))
+    composeEnhancers(applyMiddleware(logger, epicMiddleware))
 );
+
+epicMiddleware.run(rootEpic);

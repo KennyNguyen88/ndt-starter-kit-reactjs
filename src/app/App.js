@@ -14,6 +14,7 @@ class App extends Component {
   componentDidMount(){
     this.props.sayHi();
     this.props.sayYeah();
+    this.props.doPing();
   }
 
   componentWillReceiveProps(newProps){
@@ -41,7 +42,8 @@ const mapStateToProps = ({app: {appReducer}}) => {
 
 const mapDispatchToProps = dispatch => ({
   sayHi: () => dispatch(appActions.sayHi()),
-  sayYeah: () => dispatch(appActions.sayYeah())
+  sayYeah: () => dispatch(appActions.sayYeah()),
+  doPing: () => dispatch(appActions.doPing())
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
