@@ -1,6 +1,10 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import {appActions} from './ducks/';
+
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Landing from "../landing/";
+
 class App extends Component {
 
   state = {
@@ -18,7 +22,12 @@ class App extends Component {
 
   render() {
     return (
-      <h1>{this.state.message}</h1>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={Landing}/>
+                <Route path="/test" render={() => <div> This is Test </div>} />
+            </Switch>
+        </BrowserRouter>
     );
   }
 
