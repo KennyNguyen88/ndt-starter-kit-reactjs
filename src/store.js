@@ -1,10 +1,12 @@
-import {compose, applyMiddleware, createStore, combineReducers} from "redux";
+import { compose, applyMiddleware, createStore, combineReducers } from "redux";
 import logger from "redux-logger";
-import {appReducer} from "./app";
+import { appReducer } from "./app";
+import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers(
     {
-        app: appReducer
+        app: appReducer,
+        form: formReducer
     }
 );
 
