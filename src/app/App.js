@@ -5,7 +5,7 @@ import {appActions} from './ducks/';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Landing from "../landing/";
 
-class App extends Component {
+export class App extends Component {
 
   state = {
     message: ''
