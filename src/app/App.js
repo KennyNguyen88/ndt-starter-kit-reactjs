@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
-import {appActions} from './ducks/';
+import {appActions, totalSelector} from './ducks/';
 
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Landing from "../landing/";
@@ -8,13 +8,21 @@ import Landing from "../landing/";
 export class App extends Component {
 
   state = {
-    message: ''
+    message: '',
+    shop: {
+      taxPercent: 8,
+      items: [
+          { name: 'apple', value: 1.20 },
+          { name: 'orange', value: 0.95 },
+      ]
+    }
   };
 
   componentDidMount(){
     this.props.sayHi();
     this.props.sayYeah();
     this.props.doPing();
+    console.log(totalSelector(this.state));
   }
 
   componentWillReceiveProps(newProps){
