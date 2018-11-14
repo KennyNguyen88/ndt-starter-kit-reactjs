@@ -4,6 +4,7 @@ import {appActions, totalSelector} from './ducks/';
 
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Landing from "../landing/";
+import SimpleLineChart from "../lineChart/";
 
 export class App extends Component {
 
@@ -35,6 +36,7 @@ export class App extends Component {
             <Switch>
                 <Route exact path="/" component={Landing}/>
                 <Route path="/test" render={() => <div> This is Test </div>} />
+                <Route path="/linechart" component={SimpleLineChart} />
             </Switch>
         </BrowserRouter>
     );
