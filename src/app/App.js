@@ -5,6 +5,7 @@ import {appActions, totalSelector} from './ducks/';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Landing from "../landing/";
 import Wow from "../wow/";
+import Pose from "../pose/";
 
 export class App extends Component {
 
@@ -37,6 +38,7 @@ export class App extends Component {
                 <Route exact path="/" component={Landing}/>
                 <Route path="/test" render={() => <div> This is Test </div>} />
                 <Route path="/wow" component={Wow} />
+                <Route path="/pose" component={Pose} />
             </Switch>
         </BrowserRouter>
     );
