@@ -20,6 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-dev": "set \"REACT_APP_STAGE=develop\" && npm start",
+    "start-prod": "set \"REACT_APP_STAGE=product\" && npm start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
