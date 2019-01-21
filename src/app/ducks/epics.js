@@ -1,10 +1,11 @@
 import { PING, default as actions } from "./actions";
 import { ofType } from 'redux-observable';
-import { mapTo, delay } from 'rxjs/operators';
-
+import { mapTo, delay, map } from 'rxjs/operators';
+import getPosts from "./services";
 const pingEpic = action$ => action$.pipe(
     ofType(PING),
-    delay(1000),
+    getPosts,
+    map(resp => console.log('resp: ', resp)),
     mapTo(actions.doPong())
 );
 
